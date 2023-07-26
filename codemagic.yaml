@@ -18,7 +18,7 @@ workflows:
           app-store-connect fetch-signing-files \
             $(xcode-project detect-bundle-id) \
             --platform MAC_OS \
-            --type MAC_INSTALLER_DISTRIBUTION \
+            --type MAC_APP_STORE \
             --create
       - name: Fetch Mac Installer Distribution certificates
         script: |
