@@ -50,7 +50,6 @@ workflows:
           flutter build macos --release \
           --build-name=2 \
           --build-number=$INCREMENTED_BUILD_NUMBER \
-          --flavor stage -t lib/main_stage.dart \
           --config-only
       - name: Package macOS application
         script: |
