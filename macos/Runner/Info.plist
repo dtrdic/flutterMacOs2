@@ -28,7 +28,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.business</string>
+	<key>LSApplicationCategoryType</key> <!-- ovo sam rucno doda -->
+	<string>public.app-category.business</string> <!-- ovo sam rucno doda -->
 </dict>
 </plist>
