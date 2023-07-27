@@ -67,6 +67,7 @@ workflows:
 
           # Sign the package
           xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME"
+          rm -f unsigned.pkg  
     artifacts:
       - build/macos/**/*.pkg
     publishing:
