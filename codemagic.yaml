@@ -41,10 +41,17 @@ workflows:
           find . -name "Podfile" -execdir pod install \;
       - name: Build Flutter macOS
         script: |
-          flutter config --enable-macos-desktop && \
+          # flutter config --enable-macos-desktop && \
+          # flutter build macos --release \
+          #   --build-name=1.0.$PROJECT_BUILD_NUMBER \
+          #   --build-number=$PROJECT_BUILD_NUMBER
+
+          INCREMENTED_BUILD_NUMBER=$(($PROJECT_BUILD_NUMBER + 10000))
           flutter build macos --release \
-            --build-name=1.0.$PROJECT_BUILD_NUMBER \
-            --build-number=$PROJECT_BUILD_NUMBER
+          --build-name=2 \
+          --build-number=$INCREMENTED_BUILD_NUMBER \
+          --flavor stage -t lib/main_stage.dart \
+          --config-only
       - name: Package macOS application
         script: |
           set -x
