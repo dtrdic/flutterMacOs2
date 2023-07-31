@@ -1,3 +1,7 @@
+definitions:     
+  env_vars: &env_vars
+    EMAIL_RECIPIENTS: dtrdic2@gmail.com; david@nevercode.io
+
 workflows:
   macOS-workflow:
     name: macOS Workflow
@@ -9,6 +13,8 @@ workflows:
       cocoapods: default
       groups:
         - appstore_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+      vars:
+        <<: *env_vars
     scripts:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
@@ -79,8 +85,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - user_1@example.com
-          - user_2@example.com
+          - $EMAIL_RECIPIENTS
         notify:
           success: true
           failure: false
