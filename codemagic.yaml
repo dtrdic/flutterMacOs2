@@ -1,11 +1,11 @@
-definitions:
-  environment:
-    groups:
-      - emails     
-  env_vars: &env_vars
-    email:
-      recipients:
-        - $EMAIL_RECIPIENTS
+# definitions:
+#   environment:
+#     groups:
+#       - emails     
+#   env_vars: &env_vars
+#     email:
+#       recipients:
+#         - $EMAIL_RECIPIENTS
 
 workflows:
   macOS-workflow:
@@ -89,14 +89,13 @@ workflows:
     artifacts:
       - build/macos/**/*.pkg
     publishing:
-        <<: *env_vars
-      # email:
-      #   recipients:
-      #     - $EMAIL_RECIPIENTS
-      #   notify:
-      #     success: true
-      #     failure: true
-      # app_store_connect:
-      #   api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-      #   key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-      #   issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+      email:
+        recipients:
+          ["david@nevercode.io", "dtrdic2@gmail.com"]
+        notify:
+          success: true
+          failure: true
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
