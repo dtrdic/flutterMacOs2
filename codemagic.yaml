@@ -90,8 +90,8 @@ workflows:
       - build/macos/**/*.pkg
     publishing:
       email:
-        recipients:
-          - $EMAIL_RECIPIENTS
+        recipients: 
+           - ${EMAIL_RECIPIENTS}
         notify:
           success: true
           failure: true
