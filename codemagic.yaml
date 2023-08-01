@@ -87,7 +87,6 @@ workflows:
       email:
         recipients:
           - $EMAIL_RECIPIENTS
-          - david@gizardsolution.com
         notify:
           success: true
           failure: true
