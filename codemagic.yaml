@@ -1,6 +1,6 @@
-definitions:     
-  env_vars: &env_vars
-    EMAIL_RECIPIENTS: dtrdic2@gmail.com; david@nevercode.io
+# definitions:     
+#   env_vars: &env_vars
+#     EMAIL_RECIPIENTS: dtrdic2@gmail.com; david@nevercode.io
 
 workflows:
   macOS-workflow:
@@ -12,13 +12,14 @@ workflows:
       xcode: latest
       cocoapods: default
       groups:
+        - emails
         - appstore_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
       vars:
         <<: *env_vars
     scripts:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
-          keychain initialize
+          keychain initialize2
       - name: Fetch Mac App Distribution certificate and Mac App Store profile
         script: |
           app-store-connect fetch-signing-files \
@@ -86,9 +87,10 @@ workflows:
       email:
         recipients:
           - $EMAIL_RECIPIENTS
+          - david@gizardsolution.com
         notify:
           success: true
-          failure: false
+          failure: true
       app_store_connect:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
