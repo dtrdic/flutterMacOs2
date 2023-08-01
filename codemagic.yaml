@@ -89,7 +89,7 @@ workflows:
     publishing:
       email:
         recipients: 
-             ["david@nevercode.io", "dtrdic2@gmail.com"]
+             [$EMAIL_RECIPIENTS]
         notify:
           success: true
           failure: true
