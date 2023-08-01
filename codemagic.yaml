@@ -3,7 +3,9 @@ definitions:
     groups:
       - emails     
   env_vars: &env_vars
-    $EMAIL_RECIPIENTS
+    email:
+      recipients:
+        - $EMAIL_RECIPIENTS
 
 workflows:
   macOS-workflow:
