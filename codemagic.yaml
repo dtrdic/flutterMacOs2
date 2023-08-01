@@ -19,8 +19,8 @@ workflows:
       groups:
         - emails
         - appstore_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
-      # vars:
-      #   <<: *env_vars
+      vars:
+        EMAIL_RECIPIENTS2: $EMAIL_RECIPIENTS
     scripts:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
@@ -91,7 +91,7 @@ workflows:
     publishing:
       email:
         recipients: 
-             [$EMAIL_RECIPIENTS]
+             [$EMAIL_RECIPIENTS2]
         notify:
           success: true
           failure: true
