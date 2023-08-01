@@ -91,7 +91,7 @@ workflows:
     publishing:
       email:
         recipients: 
-           - ${EMAIL_RECIPIENTS}
+             [$EMAIL_RECIPIENTS]
         notify:
           success: true
           failure: true
